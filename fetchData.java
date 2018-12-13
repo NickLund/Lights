@@ -20,6 +20,7 @@ public class fetchData extends AsyncTask<Void,Void,Void> {
     String SingleSpeedParsed = "";
     String dataColor = "";
     String ColorParsed = "";
+    String SingleColorParsed = "";
 
     @Override
     protected Void doInBackground(Void... voids) {
