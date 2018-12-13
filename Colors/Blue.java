@@ -1,10 +1,9 @@
-package com.example.nick_lund.lights;
+package com.example.nick_lund.lights.Colors;
 
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.util.Log;
+
+import com.example.nick_lund.lights.Menu;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,15 +15,13 @@ import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-
-/*
-public class StartButton extends AsyncTask<String, Void, String> {
+public class Blue extends AsyncTask<String, Void, String> {
     private void setPostRequestContent(HttpURLConnection conn, JSONObject jsonObject) throws IOException {
 
         OutputStream os = conn.getOutputStream();
         BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
         writer.write(jsonObject.toString());
-        Log.i(MainActivity.class.toString(), jsonObject.toString());
+        Log.i(Menu.class.toString(), jsonObject.toString());
         writer.flush();
         writer.close();
         os.close();
@@ -33,9 +30,7 @@ public class StartButton extends AsyncTask<String, Void, String> {
     private JSONObject buidJsonObject() throws JSONException {
 
         JSONObject jsonObject = new JSONObject();
-        jsonObject.accumulate("name", etName.getText().toString());
-        jsonObject.accumulate("country",  etCountry.getText().toString());
-        jsonObject.accumulate("twitter",  etTwitter.getText().toString());
+        jsonObject.accumulate("color", Menu.blue.getText().toString());
 
         return jsonObject;
     }
@@ -80,10 +75,5 @@ public class StartButton extends AsyncTask<String, Void, String> {
     }
     // onPostExecute displays the results of the AsyncTask.
     @Override
-    protected void onPostExecute(String result) {
-        tvResult.setText(result);
-    }
+    protected void onPostExecute(String result) {}
 }
-
-
-*/

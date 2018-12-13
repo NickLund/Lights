@@ -40,13 +40,17 @@ public class fetchData extends AsyncTask<Void,Void,Void> {
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             InputStream inputStream = httpURLConnection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-            String line2 = "";
-            while(line2 != null) {
-                line2 = bufferedReader.readLine();
-                dataSpeed = line2;
-            }
+            //String line2 = "";
+//            while(line2 != null) {
+//                line2 = bufferedReader.readLine();
+//                dataSpeed = line2;
+//            }
+            dataSpeed = bufferedReader.readLine();
             JSONObject JO = new JSONObject (dataSpeed);
+            //SpeedParsed = "Color: " + JO.get("speed");
             SpeedParsed = JO.getString("speed");
+            System.out.print("Speed \n");
+            System.out.print(SpeedParsed + "\n");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -59,13 +63,19 @@ public class fetchData extends AsyncTask<Void,Void,Void> {
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             InputStream inputStream = httpURLConnection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-            String line3 = "";
-            while(line3 != null){
-                line3 = bufferedReader.readLine();
-                dataColor = line3;
-            }
+//            String line3 = "";
+//            while(line3 != null){
+//                line3 = bufferedReader.readLine();
+//                dataColor = line3;
+//            }
+            dataColor = bufferedReader.readLine();
+
             JSONObject JO = new JSONObject (dataColor);
-            SpeedParsed = JO.getString("color");
+            ColorParsed = JO.getString("color");
+            //SpeedParsed = "Color: " + JO.get("color");
+
+            System.out.print("Color \n");
+            System.out.print(ColorParsed + "\n");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -79,8 +89,8 @@ public class fetchData extends AsyncTask<Void,Void,Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-        Menu.Speed = (this.SpeedParsed);
-        Menu.LEDColor = (this.ColorParsed);
+        Menu.Speed.setText(this.SpeedParsed);
+        Menu.LEDColor.setText(this.ColorParsed);
     }
 
 
