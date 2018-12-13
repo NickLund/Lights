@@ -11,8 +11,11 @@ import org.w3c.dom.Text;
 
 public class Menu extends AppCompatActivity {
     Button click;
-    public static TextView Speed;
-    public static TextView LEDColor;
+    public static String Speed;
+    public static String LEDColor;
+    public static final String EXTRA_TEXT = "com.example.nick_lund.lights.EXTRA_TEXT";
+    public static final String EXTRA_TEXT2 = "com.example.nick_lund.lights.EXTRA_TEXT2";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +33,8 @@ public class Menu extends AppCompatActivity {
     }
     public void SetPattern() {
         Intent intent = new Intent(this, SetPattern.class);
+        intent.putExtra(EXTRA_TEXT, Speed);
+        intent.putExtra(EXTRA_TEXT2, LEDColor);
         startActivity(intent);
     }
 }

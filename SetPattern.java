@@ -1,5 +1,6 @@
 package com.example.nick_lund.lights;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.SeekBar;
@@ -13,6 +14,15 @@ public class SetPattern extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.set_pattern);
+
+        Intent intent = getIntent();
+        String Speed = intent.getStringExtra(Menu.EXTRA_TEXT);
+        String LEDColor = intent.getStringExtra(Menu.EXTRA_TEXT2);
+
+        TextView textViewSpeed = (TextView) findViewById(R.id.Speed);
+        TextView textViewColor = (TextView) findViewById(R.id.Color);
+        textViewSpeed.setText(Speed);
+        textViewColor.setText(LEDColor);
 
         // set a change listener on the SeekBar
         SeekBar seekBar = findViewById(R.id.seekBar);

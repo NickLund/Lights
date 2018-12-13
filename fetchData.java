@@ -17,10 +17,8 @@ import java.net.URL;
 public class fetchData extends AsyncTask<Void,Void,Void> {
     String dataSpeed = "";
     String SpeedParsed = "";
-    String SingleSpeedParsed = "";
     String dataColor = "";
     String ColorParsed = "";
-    String SingleColorParsed = "";
 
     @Override
     protected Void doInBackground(Void... voids) {
@@ -43,15 +41,12 @@ public class fetchData extends AsyncTask<Void,Void,Void> {
             InputStream inputStream = httpURLConnection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
             String line2 = "";
-            while(line2 != null){
+            while(line2 != null) {
                 line2 = bufferedReader.readLine();
                 dataSpeed = line2;
             }
-            JSONArray JA = new JSONArray(dataSpeed);
-            for(int i =0; i<JA.length(); i++){
-                JSONObject JO = (JSONObject) JA.get(i);
-
-            }
+            JSONObject JO = new JSONObject (dataSpeed);
+            SpeedParsed = JO.getString("speed");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -69,9 +64,13 @@ public class fetchData extends AsyncTask<Void,Void,Void> {
                 line3 = bufferedReader.readLine();
                 dataColor = line3;
             }
+            JSONObject JO = new JSONObject (dataColor);
+            SpeedParsed = JO.getString("color");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
             e.printStackTrace();
         }
         return null;
@@ -80,8 +79,8 @@ public class fetchData extends AsyncTask<Void,Void,Void> {
     @Override
     protected void onPostExecute(Void aVoid) {
         super.onPostExecute(aVoid);
-        Menu.Speed.setText(this.dataSpeed);
-        Menu.LEDColor.setText(this.dataColor);
+        Menu.Speed = (this.SpeedParsed);
+        Menu.LEDColor = (this.ColorParsed);
     }
 
 
